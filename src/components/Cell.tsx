@@ -1,5 +1,5 @@
 import React from 'react'
-import { CELL_STATE } from '../constants'
+import { DEAD } from '../constants'
 import { CellStateType } from '../interfaces'
 import { CellOuter } from './Cell.styles'
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Cell = ({
-  state = CELL_STATE.DEAD as CellStateType,
+  state = DEAD,
   onClick,
 }: Props): JSX.Element => {
   return (

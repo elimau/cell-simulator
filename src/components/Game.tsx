@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { BoardState } from '../interfaces'
-import { CELL_STATE, BOARD_SIZE } from '../constants'
+import { BOARD_SIZE, LIVE, DEAD } from '../constants'
 import Board from './Board'
-import { GameOuter, ButtonOuter, Button } from './Game.styles'
+import { GameOuter, GameTitle, ButtonOuter, Button } from './Game.styles'
 
 
 const getBoardInitialState = (boardSizeX: number, boardSizeY: number): BoardState => {
   return Array(boardSizeX).fill(
-    Array(boardSizeY).fill(CELL_STATE.DEAD)
+    Array(boardSizeY).fill(DEAD)
   )
 }
 
@@ -16,7 +16,7 @@ const Game = () => {
 
   const cellOnClick = (x: number, y: number) => {
     const newBoardState = JSON.parse(JSON.stringify(boardState))
-    newBoardState[x][y] = (newBoardState[x][y] === CELL_STATE.LIVE) ? CELL_STATE.DEAD : CELL_STATE.LIVE
+    newBoardState[x][y] = (newBoardState[x][y] === LIVE) ? DEAD : LIVE
     setBoardState(newBoardState)
   }
   const onClickReset = () => {
@@ -27,6 +27,7 @@ const Game = () => {
   }
   return (
     <GameOuter>
+      <GameTitle>Cell Simulator</GameTitle>
       <Board boardSizeX={BOARD_SIZE.x} boardSizeY={BOARD_SIZE.y} boardState={boardState} cellOnClick={cellOnClick} />
       <ButtonOuter>
         <Button onClick={onClickReset}>Reset</Button>

@@ -10,6 +10,9 @@ export const GameOuter = styled.div`
   flex-direction: column;
 `
 
+export const GameTitle = styled.h1`
+`
+
 export const ButtonOuter = styled.div`
   display: flex;
   flex-direction: row;

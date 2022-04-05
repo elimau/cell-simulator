@@ -15,10 +15,10 @@ const Board = ({ boardSizeX = 6, boardSizeY = 6, boardState, cellOnClick }: Prop
       <Column>
         {Array.from(Array(boardSizeX).keys()).map((row, y) => {
           return (
-            <Row>
+            <Row key={y}>
               {Array.from(Array(boardSizeY).keys()).map((cell, x) => {
                 return (
-                  <Cell state={boardState[x][y]} onClick={() => { cellOnClick(x, y) }} />
+                  <Cell key={`${x-y}`} state={boardState[x][y]} onClick={() => { cellOnClick(x, y) }} />
                 )
               })}
             </Row>
