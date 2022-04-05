@@ -22,7 +22,9 @@ const Game = () => {
     newBoardState = newBoardState.map((row, x) => {
       return row.map((cell, y) => {
         const numLiveNeighbours = getNumLiveNeighbours(boardState, x, y)
-        return calculateCellValue(boardState[x][y], boardState, numLiveNeighbours)
+        return calculateCellValue(
+          { currentState: boardState[x][y], boardState, position: { x, y }, numLiveNeighbours }
+        )
       })
     })
     setBoardState(newBoardState)

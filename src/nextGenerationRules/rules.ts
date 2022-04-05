@@ -1,11 +1,17 @@
 import { CellStateType, BoardState } from '../interfaces'
-import { LIVE, DEAD } from '../constants'
+import { LIVE, DEAD, BOARD_SIZE } from '../constants'
 
-export const calculateCellValue = (
+export const calculateCellValue = ({
+  currentState,
+  boardState,
+  position,
+  numLiveNeighbours,
+}: {
   currentState: CellStateType,
   boardState: BoardState,
+  position: { x: number, y: number },
   numLiveNeighbours: number
-): CellStateType => {
+}): CellStateType => {
   let result
   switch (true) {
     // rule 1
@@ -28,6 +34,14 @@ export const calculateCellValue = (
       result = (numLiveNeighbours === 3) ? LIVE : DEAD
       break
     }
+    // // rule 5
+    // case (
+    //   position.x === 0 || position.x === BOARD_SIZE.x - 1 ||
+    //   position.y === 0 || position.y === BOARD_SIZE.y - 1
+    // ): {
+    //     result = (numLiveNeighbours === 3) ? LIVE : DEAD
+    //     break
+    //   }
     default:
       throw new Error('unexpected scenario')
   }
