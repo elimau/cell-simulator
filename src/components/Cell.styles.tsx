@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { CELL_STATE, LIVE, DEAD } from '../constants'
+import { LIVE, DEAD } from '../constants'
 import { CellStateType } from '../interfaces'
 
 interface ButtonType {

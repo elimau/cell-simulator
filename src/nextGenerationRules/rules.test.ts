@@ -69,8 +69,51 @@ describe("Next Generation Rules", () => {
       { currentState: DEAD, boardState: testBoardState, position: { x: 2, y: 2 }, numLiveNeighbours: 8 }
     )).toEqual(DEAD)
   })
-  it.skip('TODO rule 5 - A Cell who "comes to life" outside the board should wrap at the other side of the board.', () => {
-    // TODO
+  it('TODO rule 5 - A Cell who "comes to life" outside the board should wrap at the other side of the board.', () => {
+    let liveCells
+    liveCells = [{ x: 0, y: 5 }, { x: 1, y: 5 }, { x: 2, y: 5 }]
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 0, y: 0 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 1, y: 0 }, numLiveNeighbours: 0 }
+    )).toEqual(LIVE)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 2, y: 0 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
+
+    liveCells = [{ x: 3, y: 0 }, { x: 4, y: 0 }, { x: 5, y: 0 }]
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 3, y: 5 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 4, y: 5 }, numLiveNeighbours: 0 }
+    )).toEqual(LIVE)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 5, y: 5 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
+
+    liveCells = [{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 0, y: 2 }]
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 5, y: 0 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 5, y: 1 }, numLiveNeighbours: 0 }
+    )).toEqual(LIVE)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 5, y: 2 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
+
+    liveCells = [{ x: 5, y: 3 }, { x: 5, y: 4 }, { x: 5, y: 5 }]
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 0, y: 3 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 0, y: 4 }, numLiveNeighbours: 0 }
+    )).toEqual(LIVE)
+    expect(calculateCellValue(
+      { currentState: DEAD, boardState: getTestBoardState(liveCells), position: { x: 0, y: 5 }, numLiveNeighbours: 0 }
+    )).toEqual(DEAD)
   })
 
 })

@@ -28,9 +28,8 @@ Cell next generation rules:
 board.
 
 **Please note! Implementation Notes:**
-- The above rules are applied from top to bottom. 
-- All the rules from top to bottom will be executed, with the bottom rule being run last. 
-- Hence, the bottom rule's output will be the most effective as it will run last and will potentially override the previous rules' output.
+- The above rules are applied from bottom to top. 
+- Hence, the bottom rule's output will take precidence and the top the least precedence.
 ## Unit testing
 ```
 npm test
