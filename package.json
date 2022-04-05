@@ -1,5 +1,5 @@
 {
-  "name": "belong-cell-simulator",
+  "name": "cell-simulator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
