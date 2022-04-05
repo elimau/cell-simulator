@@ -16,8 +16,14 @@ export const ButtonOuter = styled.div`
 `
 
 export const Button = styled.button`
+  all: unset;
   margin: 1rem;
   padding: 0.25rem 1rem;
   color: #F8F8FF;
   background: #1E90FF;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    background-color: #0E70DF;
+  }
 `

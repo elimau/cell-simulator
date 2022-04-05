@@ -7,7 +7,7 @@ import { GameOuter, ButtonOuter, Button } from './Game.styles'
 
 const getBoardInitialState = (boardSizeX: number, boardSizeY: number): BoardState => {
   return Array(boardSizeX).fill(
-    Array(boardSizeY).fill(CELL_STATE.LIVE)
+    Array(boardSizeY).fill(CELL_STATE.DEAD)
   )
 }
 

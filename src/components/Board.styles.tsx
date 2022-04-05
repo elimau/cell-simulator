@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const BoardOuter = styled.div`
-  background: #696969;
+  border: black solid 2px;
+  background: #F8F8FF;
 `
 export const Row = styled.div`
   display: flex;
