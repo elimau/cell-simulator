@@ -5,11 +5,15 @@ import { CellOuter } from './Cell.styles'
 
 interface Props {
   state: CellStateType
+  onClick: () => void
 }
 
-function Cell ({ state = CELL_STATE.DEAD as CellStateType }: Props) {
+const Cell = ({
+  state = CELL_STATE.DEAD as CellStateType,
+  onClick,
+}: Props): JSX.Element => {
   return (
-    <CellOuter state={state} />
+    <CellOuter state={state} onClick={onClick} />
   )
 }
 

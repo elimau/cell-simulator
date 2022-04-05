@@ -1,20 +1,15 @@
-import React, { useState } from 'react'
-import { CELL_STATE } from '../constants'
-import { CellStateType } from '../interfaces'
+import { BoardState } from '../interfaces'
 import Cell from './Cell'
 import { BoardOuter, Column, Row } from './Board.styles'
 
-function Board ({ boardSizeX = 6, boardSizeY = 6 }) {
-  const dummyState = CELL_STATE.LIVE as CellStateType
-  const [boardState, setBoardState] = useState(
-    Array(boardSizeY).fill(
-      // Array(boardSizeX).fill(CELL_STATE.LIVE)
-      [
-        CELL_STATE.LIVE,CELL_STATE.LIVE,CELL_STATE.LIVE,
-        CELL_STATE.DEAD,CELL_STATE.DEAD,CELL_STATE.DEAD,
-      ]
-    )
-  )
+interface Props {
+  boardSizeX: number
+  boardSizeY: number
+  boardState: BoardState
+  cellOnClick: (x: number, y: number) => void
+}
+
+const Board = ({ boardSizeX = 6, boardSizeY = 6, boardState, cellOnClick }: Props): JSX.Element => {
   return (
     <BoardOuter>
       <Column>
@@ -23,7 +18,7 @@ function Board ({ boardSizeX = 6, boardSizeY = 6 }) {
             <Row>
               {Array.from(Array(boardSizeY).keys()).map((cell, x) => {
                 return (
-                  <Cell state={boardState[y][x]} />
+                  <Cell state={boardState[x][y]} onClick={() => { cellOnClick(x, y) }} />
                 )
               })}
             </Row>

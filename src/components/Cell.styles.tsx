@@ -7,7 +7,6 @@ interface ButtonType {
 }
 
 export const CellOuter = styled.div<ButtonType>`
-  // border: 2px solid #00BFFF;
   width: 2rem;
   height: 2rem;
   margin: 2px;
