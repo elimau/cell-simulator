@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BoardState } from '../interfaces'
+import { BoardState, CellStateType } from '../interfaces'
 import { BOARD_SIZE, LIVE, DEAD } from '../constants'
 import Board from './Board'
 import { GameOuter, GameTitle, ButtonOuter, Button } from './Game.styles'
@@ -8,6 +8,7 @@ import { calculateCellValue } from '../nextGenerationRules/rules'
 
 const Game = () => {
   const [boardState, setBoardState] = useState(getBoardInitialState(BOARD_SIZE.x, BOARD_SIZE.y))
+  printBoardState(boardState)
 
   const cellOnClick = (x: number, y: number) => {
     const newBoardState = JSON.parse(JSON.stringify(boardState)) as BoardState
@@ -42,3 +43,15 @@ const Game = () => {
 }
 
 export default Game
+
+const printBoardState = (boardState: BoardState) => {
+  const getCellPrintout = (cellValue: CellStateType) => { return (cellValue === LIVE) ? 'X' : '-' }
+  let output = "Board state:\n"
+  boardState.forEach((row: CellStateType[], y: number) => {
+    row.forEach((cell: CellStateType, x: number) => {
+      output = output.concat(getCellPrintout(boardState[x][y]) + ' ')
+    })
+    output = output.concat("\n")
+  })
+  console.log(output)
+}
