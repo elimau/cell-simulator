@@ -3,19 +3,14 @@ import { BoardState } from '../interfaces'
 import { BOARD_SIZE, LIVE, DEAD } from '../constants'
 import Board from './Board'
 import { GameOuter, GameTitle, ButtonOuter, Button } from './Game.styles'
-
-
-const getBoardInitialState = (boardSizeX: number, boardSizeY: number): BoardState => {
-  return Array(boardSizeX).fill(
-    Array(boardSizeY).fill(DEAD)
-  )
-}
+import { getNumLiveNeighbours, getBoardInitialState } from '../nextGenerationRules/utils'
+import { calculateCellValue } from '../nextGenerationRules/rules'
 
 const Game = () => {
   const [boardState, setBoardState] = useState(getBoardInitialState(BOARD_SIZE.x, BOARD_SIZE.y))
 
   const cellOnClick = (x: number, y: number) => {
-    const newBoardState = JSON.parse(JSON.stringify(boardState))
+    const newBoardState = JSON.parse(JSON.stringify(boardState)) as BoardState
     newBoardState[x][y] = (newBoardState[x][y] === LIVE) ? DEAD : LIVE
     setBoardState(newBoardState)
   }
@@ -23,7 +18,14 @@ const Game = () => {
     setBoardState(getBoardInitialState(BOARD_SIZE.x, BOARD_SIZE.y))
   }
   const onClickNextGeneration = () => {
-    // todo: impl
+    let newBoardState = JSON.parse(JSON.stringify(boardState)) as BoardState
+    newBoardState = newBoardState.map((row, x) => {
+      return row.map((cell, y) => {
+        const numLiveNeighbours = getNumLiveNeighbours(boardState, x, y)
+        return calculateCellValue(boardState[x][y], numLiveNeighbours)
+      })
+    })
+    setBoardState(newBoardState)
   }
   return (
     <GameOuter>

@@ -29,8 +29,3 @@ export const calculateCellValue = (currentState: CellStateType, numLiveNeighbour
   }
   return result
 }
-
-export const getNumLiveNeighbours = (boardState: CellStateType[][], cellX: number, cellY: number): number => {
-  let result = 0 // todo: impl
-  return result
-}
