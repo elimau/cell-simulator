@@ -12,7 +12,7 @@ export const calculateCellValue = ({
   position: { x: number, y: number },
   numLiveNeighbours: number
 }): CellStateType => {
-  let result: CellStateType = DEAD
+  let result: CellStateType = currentState
   switch (true) {
     // rule 5
     case (

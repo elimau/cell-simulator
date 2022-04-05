@@ -32,7 +32,7 @@ const Game = () => {
   }
   return (
     <GameOuter>
-      <GameTitle>Cell Simulator</GameTitle>
+      <GameTitle>Cellss Simulator</GameTitle>
       <Board boardSizeX={BOARD_SIZE.x} boardSizeY={BOARD_SIZE.y} boardState={boardState} cellOnClick={cellOnClick} />
       <ButtonOuter>
         <Button onClick={onClickReset}>Reset</Button>
