@@ -15,13 +15,13 @@ export const calculateCellValue = (currentState: CellStateType, numLiveNeighbour
       break
     }
     // rule 3
-    case (currentState === LIVE && 3 < numLiveNeighbours ): {
+    case (currentState === LIVE && 3 < numLiveNeighbours): {
       result = DEAD
       break
     }
     // rule 4
-    case (currentState === DEAD && numLiveNeighbours === 3): {
-      result = LIVE
+    case (currentState === DEAD): {
+      result = (numLiveNeighbours === 3) ? LIVE : DEAD
       break
     }
     default:
