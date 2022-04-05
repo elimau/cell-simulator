@@ -1,7 +1,11 @@
-import { CellStateType } from '../interfaces'
+import { CellStateType, BoardState } from '../interfaces'
 import { LIVE, DEAD } from '../constants'
 
-export const calculateCellValue = (currentState: CellStateType, numLiveNeighbours: number): CellStateType => {
+export const calculateCellValue = (
+  currentState: CellStateType,
+  boardState: BoardState,
+  numLiveNeighbours: number
+): CellStateType => {
   let result
   switch (true) {
     // rule 1

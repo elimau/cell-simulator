@@ -39,9 +39,9 @@ export const getAllNeighbours = (cellX: number, cellY: number): { x: number, y: 
 }
 
 export const getBoardInitialState = (boardSizeX: number, boardSizeY: number): BoardState => {
-  let result = [] 
-  for(let i=0; i<boardSizeX;i++){
-    result.push(Array.from({length:boardSizeY},()=> (DEAD)))
+  let result = []
+  for (let i = 0; i < boardSizeX; i++) {
+    result.push(Array.from({ length: boardSizeY }, () => (DEAD)))
   }
   return result
 }
