@@ -1,5 +1,6 @@
 # Cell Simulator
 ## Cell simulator
+[Live Demo](https://heyedd.com/cell_simulator)
 ![Game screenshot](./docs/game_screenshot.png)
 
 ## Installation
